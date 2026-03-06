@@ -28,6 +28,18 @@ coverage
 # Grunt intermediate storage (https://gruntjs.com/creating-plugins#storing-task-files)
 .grunt
 
+# Python build script cache
+__pycache__/
+*.pyc
+
+# IDE specific files
+.vscode/
+.idea/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
 # Bower dependency directory (https://bower.io/)
 bower_components
 
