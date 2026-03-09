@@ -189,10 +189,11 @@ private generateSponge(level: number, x: number, y: number, z: number, size: num
    */
  public uMatrix(): Mat4 {
   const ret: Mat4 = new Mat4().setIdentity();
-  const time = performance.now() * 0.001;
-
   ret.scale(new Vec3([0.9, 0.9, 0.9]));
-  ret.rotate(time, new Vec3([0, 1, 0]));
+
+  // ROTATION IF NEEDED, COMMENTED OUT TO TEST OUT CMAERA CONTROLS
+  //const time = performance.now() * 0.001;
+  //ret.rotate(time, new Vec3([0, 1, 0]));
 
   return ret;
 }
