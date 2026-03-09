@@ -35,8 +35,33 @@ export let defaultFSText = `
 	
     
     void main () {
+<<<<<<< HEAD
+        vec3 N = normalize(normal.xyz);
+        vec3 L = normalize(lightDir.xyz);
+
+        //keep lighting for shading
+        float diffuseL = max(dot(N,L), 0.0);
+
+        //determine the color based on the face of the cube
+        vec3 baseColor = vec3(0.0, 0.0, 0.0);
+
+        if(abs(N.x) > 0.9){
+            baseColor = vec3(1.0, 0.0, 0.0);
+        }
+        else if(abs(N.y) > 0.9){
+            baseColor = vec3(0.0,1.0,0.0);
+        }
+        else{
+            baseColor = vec3(0.0, 0.0, 1.0);
+        }
+
+        gl_FragColor = vec4(baseColor * diffuseL, 1.0);
+    
+        }
+=======
         gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
     }
+>>>>>>> 6727330b77a7d83113c71751e7b5b463a3c213af
 `;
 
 // TODO: floor shaders
