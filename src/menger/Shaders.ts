@@ -35,7 +35,6 @@ export let defaultFSText = `
 	
     
     void main () {
-<<<<<<< HEAD
         vec3 N = normalize(normal.xyz);
         vec3 L = normalize(lightDir.xyz);
 
@@ -55,13 +54,10 @@ export let defaultFSText = `
             baseColor = vec3(0.0, 0.0, 1.0);
         }
 
+        //compute the shade of the base color based on lighting conditions
         gl_FragColor = vec4(baseColor * diffuseL, 1.0);
     
         }
-=======
-        gl_FragColor = vec4(1.0, 0.0, 0.0, 1.0);
-    }
->>>>>>> 6727330b77a7d83113c71751e7b5b463a3c213af
 `;
 
 // TODO: floor shaders

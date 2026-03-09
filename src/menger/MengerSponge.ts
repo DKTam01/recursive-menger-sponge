@@ -18,9 +18,9 @@ export class MengerSponge implements IMengerSponge
 {
 
   // data structures to help store sponge
-  private positions: number[] = [];
-  private indices: number[] = [];
-  private normals: number[] = [];
+  public positions: number[] = [];
+  public indices: number[] = [];
+  public normals: number[] = [];
   private level: number = 0;
   private dirty: boolean = true;
 
