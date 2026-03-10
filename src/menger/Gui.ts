@@ -261,7 +261,7 @@ export class GUI implements IGUI {
         break;
       }
       case "ArrowRight": {
-        this.camera.roll(-GUI.rollSpeed)
+        this.camera.roll(GUI.rollSpeed)
         break;
       }
       case "ArrowUp": {
