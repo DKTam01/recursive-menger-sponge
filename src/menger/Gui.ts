@@ -170,6 +170,51 @@ export class GUI implements IGUI {
     this.prevY = 0;
   }
 
+  public saveOBJ(sponge: MengerSponge): void {
+    // get vertices, normals, and triangle faces
+    const vertices = sponge.positionsFlat();
+    const normals = sponge.normalsFlat();
+    const faces = sponge.indicesFlat();
+
+    // array to store points in typescript
+    const objLines: string[] = [];
+
+    //write vertices, normals, and faces to obj file format
+
+    //vertices format: 'v' x y z
+    for (let i = 0; i < vertices.length; i += 3) {
+      objLines.push(`v ${vertices[i]} ${vertices[i + 1]} ${vertices[i + 2]}`)
+    }
+
+    //normals format: 'vn' x y z
+    for (let i = 0; i < normals.length; i += 3) {
+      objLines.push(`vn ${normals[i]} ${normals[i + 1]} ${normals[i + 2]}`)
+    }
+
+    //triangle faces format: 'f' vertex1//vertex1 normal vertex2//vertex2 normal vertex3//vertex3 normal
+    for (let i = 0; i < faces.length; i += 3) {
+      //reading in sets of 3 for trianges (hence v1=i, v2=i+1, v3=i+2)
+      //obj format is 1-based so have to +1 to all faces to get the right indexing
+      const v1 = faces[i] + 1;
+      const v2 = faces[i + 1] + 1;
+      const v3 = faces[i + 2] + 1;
+
+      objLines.push(`f ${v1}//${v1} ${v2}//${v2} ${v3}//${v3}`);
+    }
+
+    //create a blob for temporarily holding objLines in obj format
+    const blob = new Blob([objLines.join("\n")], { type: "text/plain" });
+    const url = URL.createObjectURL(blob);
+    const currSponge = document.createElement("a");
+    currSponge.href = url;
+    currSponge.download = "MengerSponge.obj";
+
+    //remove temporary blob after downloaded
+    URL.revokeObjectURL(url);
+
+  }
+  
+
   /**
    * Callback function for a key press event
    * @param key
@@ -184,6 +229,11 @@ export class GUI implements IGUI {
      */
 
 	// TOOD: Your code for key handling
+
+    if(key.ctrlKey && key.key == "s") {
+      this.saveOBJ(this.sponge);
+      return;
+    }
 
     switch (key.code) {
       case "KeyW": {
@@ -267,6 +317,8 @@ export class GUI implements IGUI {
     canvas.addEventListener("mouseup", (mouse: MouseEvent) =>
       this.dragEnd(mouse)
     );
+
+
 
     /* Event listener to stop the right click menu */
     canvas.addEventListener("contextmenu", (event: any) =>
