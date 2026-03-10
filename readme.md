@@ -2,13 +2,15 @@
 
 ## Team Members
 Lauren Camper
+
 Emily Tutt
+
 Rudwika Manne
+
 Danielle M. McIntyre
+
 Daniel Kee Tam
 
-## Libraries and Build Script
-They are left unchanged from the original starter zip
 
 ## Project Overview
 This is a WebGL-based renderer for a Menger Sponge. It features a recursive geometry system, a custom FPS camera, and a procedural checkerboard floor.
