@@ -54,9 +54,10 @@ export let defaultFSText = `
             baseColor = vec3(0.0, 0.0, 1.0);
         }
 
+        //compute the shade of the base color based on lighting conditions
         gl_FragColor = vec4(baseColor * diffuseL, 1.0);
     
-    }
+        }
 `;
 
 // TODO: floor shaders
